@@ -1,6 +1,6 @@
 import vt
 import tkinter as tk
-from tkinter import filedialog, messagebox
+from tkinter import filedialog, messagebox, simpledialog
 from PIL import Image, ImageTk
 import os
 import hashlib
@@ -19,12 +19,19 @@ expected_logo_hash = 'f5d8ab7499d2762c2ef8b8d3de87fc980b32d504eb5e8d810279ea80f6
 arge_path = 'arge.png'
 expected_arge_hash = '232ae352aba3a9095ccab047598cd4a307e5ab45c6218336fb4bd14a1c46ea7e7df3e25e95223cf8a28e8c86746f589aa7d8e704110cd454ed1e593a71c8393a'
 
+tht_path = 'tht.png'
+expected_tht_hash = '4d2e4fcb8c744664e22e89905bc81db226edb3ec67462e1aacf03e384138dfdb752a2e826fc87d0689ab2ee4f7bb09be7384af264902704196e15141f2a1d894'
+
 if not os.path.exists(logo_path):
     messagebox.showerror("Hata", "logo.png dosyası bulunamadı!")
     exit()
 
 if not os.path.exists(arge_path):
     messagebox.showerror("Hata", "arge.png dosyası bulunamadı!")
+    exit()
+
+if not os.path.exists(tht_path):
+    messagebox.showerror("Hata", "tht.png dosyası bulunamadı!")
     exit()
 
 # Dosyanın hash değerini hesapla ve karşılaştır
@@ -138,13 +145,24 @@ root = tk.Tk()
 root.title("NMScanner")
 
 # Logo ve arge görüntüleme
-img_logo = Image.open(logo_path)
-img_logo = img_logo.resize((200, 200), Image.LANCZOS)
-logo_img = ImageTk.PhotoImage(img_logo)
+forum = simpledialog.askstring("Forum Seçimi", "Hangi forumdan geldiniz?", initialvalue="TurkHackTeam")
 
-img_arge = Image.open(arge_path)
-img_arge = img_arge.resize((200, 200), Image.LANCZOS)
-arge_img = ImageTk.PhotoImage(img_arge)
+if forum == "TurkHackTeam":
+    img_logo = Image.open(logo_path)
+    img_logo = img_logo.resize((200, 200), Image.LANCZOS)
+    logo_img = ImageTk.PhotoImage(img_logo)
+
+    img_tht = Image.open(tht_path)
+    img_tht = img_tht.resize((200, 200), Image.LANCZOS)
+    arge_img = ImageTk.PhotoImage(img_tht)
+else:
+    img_logo = Image.open(logo_path)
+    img_logo = img_logo.resize((200, 200), Image.LANCZOS)
+    logo_img = ImageTk.PhotoImage(img_logo)
+
+    img_arge = Image.open(arge_path)
+    img_arge = img_arge.resize((200, 200), Image.LANCZOS)
+    arge_img = ImageTk.PhotoImage(img_arge)
 
 logo_label = tk.Label(root, image=logo_img)
 logo_label.pack(side=tk.LEFT, pady=10, padx=10)
