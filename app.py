@@ -145,7 +145,7 @@ root = tk.Tk()
 root.title("NMScanner")
 
 # Logo ve arge görüntüleme
-forum = simpledialog.askstring("Forum Seçimi", "Hangi forumdan geldiniz?", initialvalue="TurkHackTeam")
+forum = simpledialog.askstring("Forum Seçimi", "Hangi forumdan geldiniz?", initialvalue="TurkHackTeam veya YazılımForum")
 
 if forum == "TurkHackTeam":
     img_logo = Image.open(logo_path)
