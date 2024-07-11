@@ -12,12 +12,19 @@ API_KEY = 'dd36314000b31eaf0e811cc3f636389d90d860c06e27a110188055a0e764be81'
 # VirusTotal istemcisini oluştur
 client = vt.Client(API_KEY)
 
-# Logo dosyası kontrolü
+# Logo ve arge dosyası kontrolü
 logo_path = 'logo.png'
-expected_hash = '33031400ca1484a2082768f72a85dad0b8a5d317494edb6750aad02f273f4130a16939a142af7c4c1d2113897fca12c28e9ac00881bb3e5ca9da34d1c24d7aaf'
+expected_logo_hash = '33031400ca1484a2082768f72a85dad0b8a5d317494edb6750aad02f273f4130a16939a142af7c4c1d2113897fca12c28e9ac00881bb3e5ca9da34d1c24d7aaf'
+
+arge_path = 'arge.png'
+expected_arge_hash = '232ae352aba3a9095ccab047598cd4a307e5ab45c6218336fb4bd14a1c46ea7e7df3e25e95223cf8a28e8c86746f589aa7d8e704110cd454ed1e593a71c8393a'
 
 if not os.path.exists(logo_path):
     messagebox.showerror("Hata", "logo.png dosyası bulunamadı!")
+    exit()
+
+if not os.path.exists(arge_path):
+    messagebox.showerror("Hata", "arge.png dosyası bulunamadı!")
     exit()
 
 # Dosyanın hash değerini hesapla ve karşılaştır
@@ -130,13 +137,20 @@ def show_report(report):
 root = tk.Tk()
 root.title("NMScanner")
 
-# Logo görüntüleme
-img = Image.open(logo_path)
-img = img.resize((200, 200), Image.LANCZOS)
-logo_img = ImageTk.PhotoImage(img)
+# Logo ve arge görüntüleme
+img_logo = Image.open(logo_path)
+img_logo = img_logo.resize((200, 200), Image.LANCZOS)
+logo_img = ImageTk.PhotoImage(img_logo)
+
+img_arge = Image.open(arge_path)
+img_arge = img_arge.resize((200, 200), Image.LANCZOS)
+arge_img = ImageTk.PhotoImage(img_arge)
 
 logo_label = tk.Label(root, image=logo_img)
-logo_label.pack(pady=10)
+logo_label.pack(side=tk.LEFT, pady=10, padx=10)
+
+arge_label = tk.Label(root, image=arge_img)
+arge_label.pack(side=tk.RIGHT, pady=10, padx=10)
 
 frame = tk.Frame(root)
 frame.pack(pady=20)
@@ -175,4 +189,3 @@ root.mainloop()
 
 # Uygulamayı kapatmadan önce client'ı kapatma
 client.close()
-
