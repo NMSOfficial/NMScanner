@@ -14,7 +14,7 @@ client = vt.Client(API_KEY)
 
 # Logo ve arge dosyası kontrolü
 logo_path = 'logo.png'
-expected_logo_hash = '33031400ca1484a2082768f72a85dad0b8a5d317494edb6750aad02f273f4130a16939a142af7c4c1d2113897fca12c28e9ac00881bb3e5ca9da34d1c24d7aaf'
+expected_logo_hash = 'f5d8ab7499d2762c2ef8b8d3de87fc980b32d504eb5e8d810279ea80f697857eb3c18ccda4e87d448a9a3daba6770ac32c84d281d16eb574a8fb42fd433d5832'
 
 arge_path = 'arge.png'
 expected_arge_hash = '232ae352aba3a9095ccab047598cd4a307e5ab45c6218336fb4bd14a1c46ea7e7df3e25e95223cf8a28e8c86746f589aa7d8e704110cd454ed1e593a71c8393a'
