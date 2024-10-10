@@ -88,7 +88,6 @@ def get_file_report(file_id):
         time.sleep(5)
     return report
 
-# URL raporu alma fonksiyonu
 def get_url_report(url_id):
     while True:
         report = client.get_object(f"/analyses/{url_id}")
